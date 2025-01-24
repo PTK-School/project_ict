@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Nong Khai</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for the home icon -->
+    <style>
+        /* Basic Header and Navbar Styles */
+        .header {
+            font-family: 'Verdana';
+            font-weight: bold;
+        }
+
+        .header h1 {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 12px 12px 11px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        
+        .header h2, .header p {
+            font-family: 'Quicksand';
+            color: #FAF9F6;
+            cursor: pointer;
+        }
+
+        /* Styling for Navigation and Home Button */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+            cursor: pointer;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background-image: url('images/Dragon.webp');
+            transition: background-color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            background-color: #3498db;
+        }
+
+        .menu-trigger {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(244, 240, 240);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-trigger:hover {
+            background-color: #3498db;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Popup Menu Styles */
+        .popup-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup-menu ul li {
+            margin: 10px 0;
+        }
+
+        .popup-menu ul li a {
+            color: #f7f5f5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-menu ul li a:hover {
+            background-color: #3498db;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: #ff5722;
+        }
+
+        /* Temple Section Styling */
+        .temple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .temple {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .temple p {
+            margin-bottom: 10px; /* Adds space between paragraphs */
+            padding: 10px 0; /* Adds space inside the paragraphs */
+            padding-left: 1in;  /* 1 inch of space on the left */
+            padding-right: 1in; /* 1 inch of space on the right */
+        }
+
+        .temple h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .temple-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between the images */
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+        }
+
+        .temple-row img {
+        width: 30%; /* Each image takes up 30% of the row width */
+        height: 40%; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: Limit the height if necessary */
+        object-fit: cover; /* Ensures the image fits without distortion */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Discovery Nong Khai</h1>
+            <div class="nav-buttons">
+                <!-- Home Button with House Icon -->
+                <a href="index.html" aria-label="Home">
+                    <div class="home-icon">
+                        <i class="fas fa-home"></i> <!-- Font Awesome Home Icon -->
+                    </div>
+                </a>
+                <!-- Menu Button -->
+                <div id="menuTrigger" class="menu-trigger" aria-label="Open Navigation Menu">Menu</div>
+            </div>
+            <!-- Popup Menu -->
+            <div id="popupMenu" class="popup-menu">
+                <button id="closeButton" class="close-button" aria-label="Close Navigation Menu">&times;</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Nong Khai</a></li>
+                    <li><a href="temples.html">Temples</a></li>
+                    <li><a href="museums.html">Museums and Parks</a></li>
+                    <li><a href="natural.html">Natural Landscapes</a></li>
+                    <li><a href="markets.html">Markets</a></li>
+                    <li><a href="cafes.html">Cafes and Restaurants</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <h2>Nong Khai</h2>
+            <p>A paradise in the heart of Mekong River</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="temple-section">
+            <div class="temple">
+                <h3>About Nong Khai</h3>
+                <p>Nong Khai province contains the longest stretch of the Mekong River: 320 km It is also a major tourist Destination and the major launching point for journeys into Laos or exploring greater Isan (northeastern Thailand). Nong Khai features temples, traditional Culture, a beautiful countryside, and a rural folk lifestyle, the most lively EVENT of which centres on the Bung Fi Phaya Nak, the naga fireballs: an annual event whereby mysterious glowing balls of light rise up out of the river, believed to be sent by the naga king in honour of the Lord Buddha.</p>
+                <p>Nong Khai is a border town on the bank of the Mekong River opposite the Lao People’s Democratic Republic (Lao PDR.). A friendship bridge links the two countries and Nong Khai is a popular stop for Travellers headed to Vientiane and greater Laos. Mud Mee, a special style of silk that is popular with the Thai royal family, is produced in Nong Khai and the naga fireballs, a mysterious annual event, takes place in the Mekong River not far from town.</p>
+                <p>Some attractions Traveller should not miss are Prab Hor Monument, built to honour those who died in the fight against Chinese Hor rebellion; Luang Pho Pra Sai,  worshipped by many people, located on Pho Chai Road; Hat Chom Manee, the Beach on the Mekong River known as ‘Pattaya E-san’; Thai-Lao Friendship Bridge, a bridge over the Mekong River, connecting Nong Khai province with Vientiane Prefecture in Laos. It was founded by the cooperation of Australia, Laos and Thailand with a length of 1.2 km and a width 15 m.</p>
+            </div>
+        </section>
+        <section class="video-section">
+            <div class="temple">
+                <p>Watch this video to learn more about Nong Khai</p>
+                <div class="video">
+                    <video controls width="800" height="450">
+                    <source src="videos/Tour of Nong Khai City, Northeast Thailand..mp4" type="video/mp4">
+                </video>
+            <p></p>
+            <p>Video credit: CoQFAiF9UBY. (2021, November 15). *Tour of Nong Khai City, Northeast Thailand* [Video]. YouTube. <a href="https://www.youtube.com/watch?v=CoQFAiF9UBY" target="_blank">https://www.youtube.com/watch?v=CoQFAiF9UBY</a></p>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Discovery Nong Khai. All rights reserved.</p>
+    </footer>
+</body>
+</html>

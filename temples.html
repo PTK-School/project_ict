@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Nong Khai</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for the home icon -->
+    <style>
+        /* Basic Header and Navbar Styles */
+        .header {
+            font-family: 'Verdana';
+            font-weight: bold;
+        }
+
+        .header h1 {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 12px 12px 11px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        
+        .header h2, .header p {
+            font-family: 'Quicksand';
+            color: #FAF9F6;
+            cursor: pointer;
+        }
+
+        /* Styling for Navigation and Home Button */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+            cursor: pointer;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background-image: url('images/Dragon.webp');
+            transition: background-color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            background-color: #3498db;
+        }
+
+        .menu-trigger {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(244, 240, 240);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-trigger:hover {
+            background-color: #3498db;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Popup Menu Styles */
+        .popup-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup-menu ul li {
+            margin: 10px 0;
+        }
+
+        .popup-menu ul li a {
+            color: #f7f5f5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-menu ul li a:hover {
+            background-color: #3498db;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: #ff5722;
+        }
+
+        /* Temple Section Styling */
+        .temple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .temple {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .temple p {
+            margin-bottom: 10px; /* Adds space between paragraphs */
+            padding: 10px 0; /* Adds space inside the paragraphs */
+            padding-left: 1in;  /* 1 inch of space on the left */
+            padding-right: 1in; /* 1 inch of space on the right */
+        }
+
+        .temple h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .temple-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between the images */
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+        }
+
+        .temple-row img {
+        width: 30%; /* Each image takes up 30% of the row width */
+        height: 40%; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: Limit the height if necessary */
+        object-fit: cover; /* Ensures the image fits without distortion */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Discovery Nong Khai</h1>
+            <div class="nav-buttons">
+                <!-- Home Button with House Icon -->
+                <a href="index.html" aria-label="Home">
+                    <div class="home-icon">
+                        <i class="fas fa-home"></i> <!-- Font Awesome Home Icon -->
+                    </div>
+                </a>
+                <!-- Menu Button -->
+                <div id="menuTrigger" class="menu-trigger" aria-label="Open Navigation Menu">Menu</div>
+            </div>
+            <!-- Popup Menu -->
+            <div id="popupMenu" class="popup-menu">
+                <button id="closeButton" class="close-button" aria-label="Close Navigation Menu">&times;</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Nong Khai</a></li>
+                    <li><a href="temples.html">Temples</a></li>
+                    <li><a href="museums.html">Museums and Parks</a></li>
+                    <li><a href="natural.html">Natural Landscapes</a></li>
+                    <li><a href="markets.html">Markets</a></li>
+                    <li><a href="cafes.html">Cafes and Restaurants</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <h2>Temples</h2>
+            <p>Explore serene sanctuaries for prayers, meditation, and spiritual healing</p>
+        </div>
+    </header>
+    <main>
+        <section class="temple-section">
+            <div class="temple">
+                <h3>Wat Pho Chai</h3>
+                <p>Wat Pho Chai is an important temple in the province located in Nong Khai. It is home to the sacred Buddha image Luang Pho Phra Sai, which is highly revered by locals and tourists. The Buddha image Luang Pho Phra Sai has a long history and a legend about its journey from Laos to Thailand.</p>
+                <p></p>
+                <div class="temple-row">
+                    <img src="images/Wat Pho Chai1.webp" alt="Wat Pho Chai Image 1">
+                    <img src="images/Wat Pho Chai2.jpg" alt="Wat Pho Chai Image 2">
+                    <img src="images/Wat Pho Chai3.jpg" alt="Wat Pho Chai Image 3">
+                </div>
+                <p></p>
+                <p>Address: Pon Pi Sai, Nong Khai, Thailand</p>
+                <p>Contact @ 042 461 123 or @ mahadech_873@hotmail.com</p>
+            </div>
+            <div class="temple">
+                <h3>Wat Pha Tak Suea</h3>
+                <p>Wat Pha Tak Seua is located in Tambon Pha Tang, Amphoe Sangkhom, Nong Khai Province, Thailand. It is a temple famous for its beautiful scenery and is one of the best viewpoints in the northeastern region. It is located on a high mountain, offering a clear view of the Mekong River and Laos.</p>
+                <p>The temple is known for its "skywalk" or glass walkway that extends over the cliff, allowing tourists to walk and enjoy a 360-degree view. Wat Pha Tak Seua also has a peaceful atmosphere, making it suitable for those who want to practice meditation and make merit. Wat Pha Tak Seua has a beautiful principal Buddha image, the Buddha in the Mara-Vijaya posture, and is the center for organizing many Buddhist activities, such as meditation, concentration, and sermons.</p>
+                <p>Overall, Wat Pha Tak Seua is a place of beauty in terms of art, culture, and nature. It is a perfect destination for both tourism and meditation at the same time.</p>
+                <div class="temple-row">
+                    <img src="images/Wat Pha Tak Suea1.jpg" alt="Wat Pha Tak 1">
+                    <img src="images/Wat Pha Tak Suea2.jpg" alt="Wat Pha Tak 2">
+                    <img src="images/Wat Pha Tak Suea3.jpg" alt="Wat Pha Tak 3">
+                </div>
+                <p></p>
+                <p>Address: Sangkhom, Nong Khai, Thailand</p>
+                <p>Contact @ 066 145 8953</p>
+                </div>
+            </div>
+            <div class="temple">
+                <h3>Wat Phrathat Klang Nam</h3>
+                <p>Wat Phra That Klang Nam or "Phra That La Nong" is located in Nong Prajak,  Nong Khai. It is an important and unique pagoda of Nong Khai Province because it is located in the middle of Nong Prajak, giving it a beautiful and unique view.</p>
+                <p>Phra That La Nong is highly revered and believed in by locals and tourists. It is believed that the relics of the Lord Buddha are enshrined in the pagoda, which is why many people come to pay homage and pray for good fortune.</p>
+                <p>Wat Phra That Klang Nam is a popular place for organizing traditional activities and merit-making ceremonies, especially during Buddhist festivals. In addition, the temple has a peaceful atmosphere, suitable for those who want to relax and make merit. It is also a popular destination for tourists to take pictures and enjoy the beautiful view of Nong Prajak and Phra That Klang Nam. Overall, Wat Phra That Klang Nam is a place that combines natural beauty, art, and culture. It is suitable for those who want to visit and experience the unique atmosphere of Nong Khai Province.</p>
+                <div class="temple-row">
+                    <img src="images/Phrathat Klang Nam1.webp" alt="Klang Nam 1">
+                    <img src="images/Phratat Klang Nam 5.jpg" alt="Klang Nam 2">
+                    <img src="images/Phrathat Klang Nam4.jpg" alt="Klang Nam 3">
+                </div>
+                <p></p>
+                <p>Address: Nong Prajak, Nong Khai, Thailand</p>
+                <p>Contact @ 0-4242-0574</p>
+            </div>
+            <div class="temple">
+                <h3>Wat Phrathat Bang Phuan </h3>
+                <p>Wat Phra That Bang Phuan is located in Phra That Bang Phuan, Nong Khai Province. It is a temple of historical and cultural significance in the Northeastern region because it enshrines Phra That Bang Phuan, an ancient pagoda that is hundreds of years old.</p>
+                <p>Phra That Bang Phuan is a bell-shaped brick and mortar pagoda in the Lan Xang style. It is believed to have been built during the Lan Xang Kingdom and was influenced by the Dvaravati period. Inside the pagoda are the relics of the Lord Buddha, making it a sacred place where locals and devotees often come to pay homage for good fortune.</p>
+                <p>Wat Phra That Bang Phuan also has other important places, such as an ancient chapel with beautiful murals, an ancient Buddha statue in the Mara-Vijaya posture, and a prang-shaped pagoda that is a mix of Lan Xang and Lanna art.</p>
+                <p>Wat Phra That Bang Phuan is a place where tourists and devotees like to visit not only to pay homage, but also to experience the diverse history and culture of the Northeast. In addition, the temple is a peaceful place, suitable for practicing Dhamma and making merit.</p>
+                <p>Overall, Wat Phra That Bang Phuan is a place that perfectly combines artistic beauty, culture, and nature. It is suitable for those interested in history and Buddhism.</p>
+                <div class="temple-row">
+                    <img src="images/Phrathat Bang Puan1.jpg" alt="Phrathat Bang Puan 1">
+                    <img src="images/Phrathat Bang Puan3.jpg" alt="Phrathat Bang Puan 2">
+                    <img src="images/Phrathat Bang Puan2.jpg" alt="Phrathat Bang Puan 3">
+                </div>
+                <p></p>
+                <p>Address: Phra That Bang Phuan, Nong Khai, Thailand</p>
+                <p>Contact @ 0-4245-8166</p>
+            </div>
+            <div class="temple">
+                <h3>Wat Hin Mak Peng</h3>
+                <p>The word Mak Peng is an Isan language, meaning fruit or anything that is a fruit. Luang Pu Thet Thetsarangi, a disciple of Phra Ajahn Sao and Phra Ajahn Man, a noble monk of the Vipassana meditation sect, was the one who established Wat Hin Mak Peng as a place for monks, nuns, and pilgrims to practice Dhamma. In addition, the area around Wat Hin Mak Peng is quiet and shady because there are many kinds of trees, and it is also located along the Mekong River. This makes this temple both beautiful and peaceful. It was established as a model development temple around 1980.</p>
+                <div class="temple-row">
+                    <img src="images/Wat Hin Mak Peng1.jpg" alt="Hin Mak Peng 1">
+                    <img src="images/Wat Hin Mak Peng2.jpg" alt="Hin Mak Peng 2">
+                    <img src="images/Wat Hin Mak Peng3.jpg" alt="Hin Mak Peng 3">
+                </div>
+                <p></p>
+                <p>Address: Sri Chiang Mai, Nong Khai, Thailand</p>
+                <p>Contact @ 0 4245 1055</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Discovery Nong Khai. All rights reserved.</p>
+    </footer>
+</body>
+</html>

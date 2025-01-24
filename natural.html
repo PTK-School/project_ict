@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Nong Khai</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for the home icon -->
+    <style>
+        /* Basic Header and Navbar Styles */
+        .header {
+            font-family: 'Verdana';
+            font-weight: bold;
+        }
+
+        .header h1 {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 12px 12px 11px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        
+        .header h2, .header p {
+            font-family: 'Quicksand';
+            color: #FAF9F6;
+            cursor: pointer;
+        }
+
+        /* Styling for Navigation and Home Button */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+            cursor: pointer;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background-image: url('images/Dragon.webp');
+            transition: background-color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            background-color: #3498db;
+        }
+
+        .menu-trigger {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(244, 240, 240);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-trigger:hover {
+            background-color: #3498db;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Popup Menu Styles */
+        .popup-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup-menu ul li {
+            margin: 10px 0;
+        }
+
+        .popup-menu ul li a {
+            color: #f7f5f5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-menu ul li a:hover {
+            background-color: #3498db;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: #ff5722;
+        }
+
+        /* Temple Section Styling */
+        .temple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .temple {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .temple p {
+            margin-bottom: 10px; /* Adds space between paragraphs */
+            padding: 10px 0; /* Adds space inside the paragraphs */
+            padding-left: 1in;  /* 1 inch of space on the left */
+            padding-right: 1in; /* 1 inch of space on the right */
+        }
+
+        .temple h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .temple-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between the images */
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+        }
+
+        .temple-row img {
+        width: 30%; /* Each image takes up 30% of the row width */
+        height: 40%; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: Limit the height if necessary */
+        object-fit: cover; /* Ensures the image fits without distortion */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Discovery Nong Khai</h1>
+            <div class="nav-buttons">
+                <!-- Home Button with House Icon -->
+                <a href="index.html" aria-label="Home">
+                    <div class="home-icon">
+                        <i class="fas fa-home"></i> <!-- Font Awesome Home Icon -->
+                    </div>
+                </a>
+                <!-- Menu Button -->
+                <div id="menuTrigger" class="menu-trigger" aria-label="Open Navigation Menu">Menu</div>
+            </div>
+            <!-- Popup Menu -->
+            <div id="popupMenu" class="popup-menu">
+                <button id="closeButton" class="close-button" aria-label="Close Navigation Menu">&times;</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Nong Khai</a></li>
+                    <li><a href="temples.html">Temples</a></li>
+                    <li><a href="museums.html">Museums and Parks</a></li>
+                    <li><a href="natural.html">Natural Landscapes</a></li>
+                    <li><a href="markets.html">Markets</a></li>
+                    <li><a href="cafes.html">Cafes and Restaurants</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <h2>Natural Landscapes</h2>
+            <p>Experience nature with Nong Khai's breathtaking landscapes</p>
+        </div>
+    </header>
+    <main>
+        <section class="temple-section">
+            <div class="temple">
+                <h3>Than Thip Waterfall</h3>
+                <p>Than Thip Waterfall is a waterfall with 3 large levels. The first level is about 20 meters high, the second level is about 30 meters high, and the third level is about 50 meters high. Because the waterfall is not far from the community and has convenient transportation access, during the tourist season there are a lot of tourists visiting the waterfall, especially during holidays.</p>
+                <p>Than Thip Waterfall is open for tourists from 1 May - 28 or 29 February and closed (to restore resources) from 1 March - 30 April of every year. Than Thip Waterfall is not a very high waterfall but is beautiful and has water flowing all year round. The area of Than Thip Waterfall has been designated as Than Thip Waterfall Forest Park. The distance to walk from the starting point to the end is only 500 meters. But the most beautiful level of the waterfall and where tourists like to come to play in the water is the 2nd level which is not too far to walk and has a pool area where you can play in the water.</p>
+                <div class="temple-row">
+                    <img src="images/Than Thip Waterfall1_.jpg" alt="Tan Tip 1">
+                    <img src="images/Than Thip Waterfall3.jpg" alt="Tan Tip 2">
+                    <img src="images/Than Thip Waterfall2.jpg" alt="Tan Tip 3">
+                </div>
+                <p></p>
+                <p>Address: Sangkhom, Nong Khai, Thailand</p>
+                <p>Contact @ 0-4241-4872 or @ p.kulakot@gmail.com</p>
+            </div>
+            <div class="temple">
+                <h3>Than Thong Waterfall</h3>
+                <p>In addition to Tan Thong Waterfall, Tan Thong National Park is also full of lush forests, both dry evergreen forests and mixed deciduous forests. There are prominent species of trees such as the Indian laburnum, the Indian laburnum, the Indian laburnum, the Indian laburnum, and bamboo groves. During the rainy season, the atmosphere is very shady. The trees and grass turn green. </p>
+                <p>Than Thong Waterfall also has clear, cool water flowing all the time, making it a popular place for relaxation for the people of Nong Khai. People come to see nature and play in the water throughout the tourist season. Before going down to the waterfall, there are shops selling agricultural products that open every holiday. There are also restaurants where tourists can eat before going down to play in the waterfall because food is not allowed to be brought down to eat in the waterfall area.</p>
+                <div class="temple-row">
+                    <img src="images/Thanthong Waterfall2.jpg" alt="Tan Tong 1">
+                    <img src="images/Thanthong Waterfall1.jpg" alt="Tan Tong 2">
+                    <img src="images/Thanthong Waterfall3.jpg" alt="Tan Tong 3">
+                </div>
+                <p></p>
+                <p>Address: Sri Chiang Mai, Nong Khai, Thailand</p>
+                <p>Contact @ 06-1012-3540</p>
+                </div>
+            </div>
+            <div class="temple">
+                <h3>Phu Pha Dak</h3>
+                <p>Phu Pha Dak is a beautiful viewpoint in Nong Khai Province. You can see the sea of fog very beautifully. It is also the highest point to see the sea of fog. It has a slope of more than 50-80 degrees and is about 800 meters long. It will take about 45 minutes to walk there. Most importantly, you must have a local villager to guide you because this path is all about the forest.</p>
+                <p>If you are not familiar with the path, you may get lost. And of course, you must be physically ready for the journey because the path is quite rough and not smooth and easy to walk. But when you get to the top, the view you will see is the sea of fog along the Mekong River. The fog and the water come together in a beautiful picture that is hard to forget. Especially in the morning, you can see the sunlight shining down on the white sea of fog.</p>
+                <div class="temple-row">
+                    <img src="images/Phu Pha Dak2.jpg" alt="Phu Pha Dak 1">
+                    <img src="images/Phu Pha Dak1.jpg" alt="Phu Pha Dak 2">
+                    <img src="images/Phu Pha Dak3.jpg" alt="Phu Pha Dak 3">
+                </div>
+                <p></p>
+                <p>Address: Sangkhom, Nong Khai, Thailand</p>
+                <p>Contact @ 0-4241-4872</p>
+            </div>
+            <div class="temple">
+                <h3>Phu Hauy Esan</h3>
+                <p>From the viewpoint of Phu Hauy Esan, you will see the Mekong River flowing along the mountain range. When the sun rises, the image in front of you is as beautiful as a dream. It is recommended to check in at Phu Huai Isan in the early morning. Plan to arrive at the viewpoint during sunrise because that is the beautiful highlight. The golden light of the sun will shine down on the beautiful sea of mist. At that moment, for those who want to change their profile picture to a green and natural feel, just stand still and take a photo against the light.</p>
+                <p>The e-tan is considered another highlight of Phu Huai Isan. There are 2 viewpoints on Phu Huai Isan. The first point is where the e-tan will stop to drop off tourists. There is a viewing platform protruding. There is a beautiful name sign or photo spot. There is also a small shop for those who want to find something to eat. Whether it's coffee, Ovaltine, or Mama Cup, it's a different kind of coffee with a view. The second spot is a little higher. Walk up another 200 meters. It is a popular viewpoint where tourists usually come to watch the sunrise. For photographers, do not miss taking pictures at this great location. It's a natural beauty that doesn't need any filters.</p>
+                <div class="temple-row">
+                    <img src="images/Phu Hauy Esan1.jpg" alt="Phu Hauy Esan 1">
+                    <img src="images/Phu Hauy Esan2.jpg" alt="Phu Hauy Esan 2">
+                    <img src="images/Phu Hauy Esan3.jpg" alt="Phu Hauy Esan 3">
+                </div>
+                <p></p>
+                <p>Address: Sangkhom, Nong Khai, Thailand</p>
+                <p>Contact @ 087-219-5500</p>
+            </div>
+            <div class="temple">
+                <h3>Phu Lon</h3>
+                <p>Most tourists who come here like to go see the natural view from the top because this area can see the view of the sunrise and sunset. Moreover, the view is from a high angle, seeing both Thailand and Laos more than 360 degrees. Moreover, the top of Phu Lon is also cool and comfortable. It is also considered a very important archaeological site because on the mountain there are traces of ancient copper mining about 4,000 years ago. This can be seen from the discovery of many metal smelting crucibles and scrap metal.</p>
+                <p>Not far from Phu Lon are many natural attractions in Nong Khai, such as Phu Huai Isan, Nong Pla Buk, Khok An, Namtok Than Thip, Phu Pha Dak, Phu Huai Siang Da, etc. For those who like to visit nature, this is another option that is very worth visiting. There are beautiful views, old archaeological sites, and Buddha statues like this.</p>
+                <div class="temple-row">
+                    <img src="images/Phu Lon1.webp" alt="Phu Lon 1">
+                    <img src="images/Phu Lon2.jpg" alt="Phu Lon 2">
+                    <img src="images/Phu Lon3.jpg" alt="Phu Lon 3">
+                </div>
+                <p></p>
+                <p>Address: Sangkhom, Nong Khai, Thailand</p>
+                <p>Contact @ 085-001-7411</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Discovery Nong Khai. All rights reserved.</p>
+    </footer>
+</body>
+</html>

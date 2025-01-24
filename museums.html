@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Nong Khai</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for the home icon -->
+    <style>
+        /* Basic Header and Navbar Styles */
+        .header {
+            font-family: 'Verdana';
+            font-weight: bold;
+        }
+
+        .header h1 {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 12px 12px 11px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        
+        .header h2, .header p {
+            font-family: 'Quicksand';
+            color: #FAF9F6;
+            cursor: pointer;
+        }
+
+        /* Styling for Navigation and Home Button */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+            cursor: pointer;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background-image: url('images/Dragon.webp');
+            transition: background-color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            background-color: #3498db;
+        }
+
+        .menu-trigger {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(244, 240, 240);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-trigger:hover {
+            background-color: #3498db;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Popup Menu Styles */
+        .popup-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup-menu ul li {
+            margin: 10px 0;
+        }
+
+        .popup-menu ul li a {
+            color: #f7f5f5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-menu ul li a:hover {
+            background-color: #3498db;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: #ff5722;
+        }
+
+        /* Temple Section Styling */
+        .temple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .temple {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .temple p {
+            margin-bottom: 10px; /* Adds space between paragraphs */
+            padding: 10px 0; /* Adds space inside the paragraphs */
+            padding-left: 1in;  /* 1 inch of space on the left */
+            padding-right: 1in; /* 1 inch of space on the right */
+        }
+
+        .temple h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .temple-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between the images */
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+        }
+
+        .temple-row img {
+        width: 30%; /* Each image takes up 30% of the row width */
+        height: 40%; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: Limit the height if necessary */
+        object-fit: cover; /* Ensures the image fits without distortion */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Discovery Nong Khai</h1>
+            <div class="nav-buttons">
+                <!-- Home Button with House Icon -->
+                <a href="index.html" aria-label="Home">
+                    <div class="home-icon">
+                        <i class="fas fa-home"></i> <!-- Font Awesome Home Icon -->
+                    </div>
+                </a>
+                <!-- Menu Button -->
+                <div id="menuTrigger" class="menu-trigger" aria-label="Open Navigation Menu">Menu</div>
+            </div>
+            <!-- Popup Menu -->
+            <div id="popupMenu" class="popup-menu">
+                <button id="closeButton" class="close-button" aria-label="Close Navigation Menu">&times;</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Nong Khai</a></li>
+                    <li><a href="temples.html">Temples</a></li>
+                    <li><a href="museums.html">Museums and Parks</a></li>
+                    <li><a href="natural.html">Natural Landscapes</a></li>
+                    <li><a href="markets.html">Markets</a></li>
+                    <li><a href="cafes.html">Cafes and Restaurants</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <h2>Museums and Parks</h2>
+            <p>Discover Nong Khai's vibrant culture and art</p>
+        </div>
+    </header>
+    <main>
+        <section class="temple-section">
+            <div class="temple">
+                <h3>Sala Kaeo Ku</h3>
+                <p>Sala Kaew Ku or Wat Khaek is located in Nong Khai Province. It is a famous religious and cultural tourist attraction in the northeastern part of Thailand. It is a place that collects many large and unique statues that were created from the religious inspiration and beliefs of Luang Pu Boonlue Surirat (Pu Boonlue), the founder of Sala Kaew Ku.</p>
+                <p>The highlight of Sala Kaew Ku is the display of large statues made of cement and reinforced steel. These statues represent gods, prophets, and sacred things from both Hinduism and Buddhism, such as Shiva, Vishnu, and the Buddha.</p>
+                <div class="temple-row">
+                    <img src="images/Sala Kaeo Ku2.jpg" alt="Sala Kaeo Ku 1">
+                    <img src="images/Sala Kaeo Ku1.jpg" alt="Sala Kaeo Ku 2">
+                    <img src="images/Sala Kaeo Ku3.jpg" alt="Sala Kaeo Ku 3">
+                </div>
+                <p></p>
+                <p>The area inside Sala Kaew Ku has a quiet and sacred atmosphere, suitable for meditation and relaxation. Sala Kaew Ku has a spacious area and unique arrangement of artifacts, allowing tourists to enjoy walking around. This place also organizes religious and cultural activities related to local beliefs. It is popular with both Thai and foreign tourists who are interested in religion, art, and culture of the northeastern part of Thailand.</p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 095 670 0153</p>
+            </div>
+            <div class="temple">
+                <h3>Nong Khai Aquarium</h3>
+                <p>Nong Khai Aquarium or Nong Khai Science Center for Education is an important tourist attraction and learning center in Nong Khai Province, located within Khon Kaen University, Nong Khai Campus. This aquarium is a collection and exhibition of various aquatic animals, both freshwater and saltwater. There are interesting displays to educate the public and tourists about life under the sea and the Mekong River.</p>
+                <p>Highlights of Nong Khai Aquarium Fish Tunnel One of the highlights of Nong Khai Aquarium is the large fish tunnel, approximately 34 meters long. Tourists can walk through this tunnel to see aquatic animals up close, including a variety of Mekong River fish, freshwater fish, and saltwater fish. Variety of aquatic animal displays The museum displays many types of aquatic animals, both rare and common species in the Mekong River and other water sources, such as Mekong catfish, rays, sharks, and various aquatic animals.</p>
+                <p>Educational and educational activities In addition to the aquatic animal displays, the museum also organizes educational activities about the environment and aquatic animal conservation, as well as learning activities for children and youth, such as telling stories about different species of fish and introducing information about preserving the aquatic environment. Nong Khai Aquarium is open to tourists and interested people. It is suitable for families and groups of students to enhance knowledge and conserve Thailand's natural resources.</p>
+                <div class="temple-row">
+                    <img src="images/Nongkhaiaquarium1.jpg" alt="Aquarium 1">
+                    <img src="images/Nongkhaiaquarium2.jpg" alt="Aquarium 2">
+                    <img src="images/Nongkhaiaquarium3.jpg" alt="Aquarium 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 083 459 4466 or @ aquarium_kku@hotmail.com</p>
+                </div>
+            </div>
+            <div class="temple">
+                <h3>Nong Thin Public Park</h3>
+                <p>It was abandoned in 1992 on an area of over 154 rai, which is a place for relaxation for the people of Nong Khai. You can come to exercise or take a leisurely walk along the Mekong River. It is considered a great place to chill in the evening for the people of Nong Khai. The atmosphere of Nong Thin Public Park is a beautiful atmosphere along the Mekong River. Especially in the morning and evening, there are people who come to exercise and walk to relax. </p>
+                <div class="temple-row">
+                    <img src="images/Nongthin Public Park1.jpg" alt="Nong Thin 1">
+                    <img src="images/Nongthin Public Park2.jpg" alt="Nong Thin 2">
+                    <img src="images/Nongthin Public Park3.jpg" alt="Nong Thin 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+            </div>
+            <div class="temple">
+                <h3>Naga Twin Plaza</h3>
+                <p>Naga Twin Square, a landmark of Nong Khai, is located in front of Lamduan Temple in Nong Khai Municipality, next to Tha Sadet Market. It is a cultural square used in various events. If anyone goes to Nong Khai city through the Mekong River or Tha Sadet Market in the evening, don't forget to stop by Naga Square, a place suitable for relaxation, exercising, cycling and enjoying the golden light in the evening. There are restaurants and shops selling things like Jim Jum and Moo Krata at many shops.</p>
+                <div class="temple-row">
+                    <img src="images/Naga Twin Plaza2.jpg" alt="Naga Twin 1">
+                    <img src="images/Naga Twin Plaza1.jpg" alt="Naga Twin 2">
+                    <img src="images/Naga Twin Plaza3.jpg" alt="Naga Twin 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+            </div>
+            <div class="temple">
+                <h3>Nong Khai City Hall Museum</h3>
+                <p>Nong Khai Provincial Museum was originally the first city hall of Nong Khai Province and the first building of Lao Phuan Province, built in 1897 as the Nong Khai provincial government office. The Nong Khai provincial government hall was the first building of the northern provinces (Nong Khai, Udon Thani, Khon Kaen, Nakhon Phanom, Mukdahan, Loei, Nong Bua Lamphu, Sakon Nakhon). It was built of single-storey brick and mortar in a French-Vietnamese colonial style. The front porch protrudes from the front of the building. The windows are arched and supported by cornices. It was designed and built by Phra Wichit Khun San (Ui Nakornthap), who was the civil servant of Lao Phuan Province and the district chief of Mi Chai (Mueang Nong Khai District).</p>
+                <p>It was divided into the office of Phraya Pathum Thewaphiban (Suea Na Nong Khai), the governor of Nong Khai (province) and Mi Chai District. In 2001, a budget was received to renovate and repair it to be used as the Nong Khai Provincial Cultural Hall until 2006 when the Nong Khai Provincial Cultural Council established it as the Nong Khai Provincial Museum, which is a permanent exhibition. The focus is on the history of Nong Khai Province, divided into 7 exhibition rooms: Room 1: Identity of Nong Khai; Room 2: Important People; Room 3: Archaeology; Room 4: Prehistoric Archaeology of Ban Khok Kon; Room 5: Cultural Diversity of Nong Khai; Room 6: Lifestyle of Nong Khai People; Room 7: Royal Grace towards Nong Khai City.</p>
+                <div class="temple-row">
+                    <img src="images/Nong Khai City Hall Museum1.jpg" alt="City Hall 1">
+                    <img src="images/Nong Khai City Hall Museum2" alt="City Hall 2">
+                    <img src="images/Nong Khai City Hall Museum3" alt="City Hall 3">
+                </div>
+                <p></p>
+                <p>Address: Nai Mueang, Muang, Nong Khai, Thailand</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Discovery Nong Khai. All rights reserved.</p>
+    </footer>
+</body>
+</html>

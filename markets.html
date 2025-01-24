@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Nong Khai</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for the home icon -->
+    <style>
+        /* Basic Header and Navbar Styles */
+        .header {
+            font-family: 'Verdana';
+            font-weight: bold;
+        }
+
+        .header h1 {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 12px 12px 11px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        
+        .header h2, .header p {
+            font-family: 'Quicksand';
+            color: #FAF9F6;
+            cursor: pointer;
+        }
+
+        /* Styling for Navigation and Home Button */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+            cursor: pointer;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background-image: url('images/Dragon.webp');
+            transition: background-color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            background-color: #3498db;
+        }
+
+        .menu-trigger {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(244, 240, 240);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-trigger:hover {
+            background-color: #3498db;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Popup Menu Styles */
+        .popup-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup-menu ul li {
+            margin: 10px 0;
+        }
+
+        .popup-menu ul li a {
+            color: #f7f5f5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-menu ul li a:hover {
+            background-color: #3498db;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: #ff5722;
+        }
+
+        /* Temple Section Styling */
+        .temple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .temple {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .temple p {
+            margin-bottom: 10px; /* Adds space between paragraphs */
+            padding: 10px 0; /* Adds space inside the paragraphs */
+            padding-left: 1in;  /* 1 inch of space on the left */
+            padding-right: 1in; /* 1 inch of space on the right */
+        }
+
+        .temple h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .temple-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between the images */
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+        }
+
+        .temple-row img {
+        width: 30%; /* Each image takes up 30% of the row width */
+        height: 40%; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: Limit the height if necessary */
+        object-fit: cover; /* Ensures the image fits without distortion */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Discovery Nong Khai</h1>
+            <div class="nav-buttons">
+                <!-- Home Button with House Icon -->
+                <a href="index.html" aria-label="Home">
+                    <div class="home-icon">
+                        <i class="fas fa-home"></i> <!-- Font Awesome Home Icon -->
+                    </div>
+                </a>
+                <!-- Menu Button -->
+                <div id="menuTrigger" class="menu-trigger" aria-label="Open Navigation Menu">Menu</div>
+            </div>
+            <!-- Popup Menu -->
+            <div id="popupMenu" class="popup-menu">
+                <button id="closeButton" class="close-button" aria-label="Close Navigation Menu">&times;</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Nong Khai</a></li>
+                    <li><a href="temples.html">Temples</a></li>
+                    <li><a href="museums.html">Museums and Parks</a></li>
+                    <li><a href="natural.html">Natural Landscapes</a></li>
+                    <li><a href="markets.html">Markets</a></li>
+                    <li><a href="cafes.html">Cafes and Restaurants</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <h2>Markets</h2>
+            <p>Discover treasures and shop amazing items in the vibrant markets of Nong Khai</p>
+        </div>
+    </header>
+    <main>
+        <section class="temple-section">
+            <div class="temple">
+                <h3>Tha Sadet Market</h3>
+                <p>Tha Sadet Market, also known as Indochina Market, is a popular tourist and shopping destination in Nong Khai Province. It is located along the Mekong River in Nong Khai Municipality, near the first Thai-Lao Friendship Bridge, which is a trade connection point between Thailand and Laos. Tha Sadet Market has many shops selling a variety of products such as clothes, accessories, electrical appliances, kitchenware, local food, fruits, souvenirs, and local products from both Thailand and neighboring countries such as Laos and Vietnam. There are also imported products from China and India, which are popular among tourists.</p>
+                <p>Tha Sadet is located along the Mekong River, giving it a unique atmosphere. Tourists can walk along the river and enjoy the view of the Mekong River and the Laos side, or walk on the bridge across the river to enjoy the view. Within Tha Sadet Market, there are also many restaurants and dessert shops offering delicious local food such as Khao Piak, Som Tam, Grilled Chicken, and Larb Pla, as well as international food influenced by neighboring countries such as Vietnamese, Laotian, and Chinese food.</p>
+                <div class="temple-row">
+                    <img src="images/Tha Sadet Market1.jpg" alt="Tha Sadet 1">
+                    <img src="images/Tha Sadet Market2.jpg" alt="Tha Sadet 2">
+                    <img src="images/Tha Sadet Market3.jpg" alt="Tha Sadet 3">
+                </div>
+                <p></p>
+                <p>In addition to shopping, tourists can also visit nearby attractions such as Wat Pho Chai, an important temple in Nong Khai Province, and the Thai-Lao Friendship Bridge, which is a symbol of good relations between Thailand and Laos.</p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 0-4242-2798 or @ wongkhai.pao@gmail.com</p>
+            </div>
+            <div class="temple">
+                <h3>Chaeng Sa Wang Fresh Market</h3>
+                <p>Talad Sod Chaeng Sawang (Chaeng Sa Wang Fresh Market) is a famous and popular fresh market in Nong Khai Province. It is located in Nong Khai Municipality. This market is a center for trading various fresh products and is a source of various local foods and fresh ingredients. Tourists and locals like to buy daily products.</p> 
+                <p>Talad Sod Chaeng Sawang is well-known among locals and tourists visiting Nong Khai. With a variety of fresh products and local foods, this market is a great place to experience the locals and taste the true flavors of Isan food.</p>
+                <div class="temple-row">
+                    <img src="images/Chaeng Sa Wang Market1.jpg" alt="Chaeng Sa Wang Fresh Market 1">
+                    <img src="images/Chaeng Sa Wang Market2.jpg" alt="Chaeng Sa Wang Fresh Market 2">
+                    <img src="images/Chaeng Sa Wang Market3.jpg" alt="Chaeng Sa Wang Fresh Market 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 098-096-8386</p>
+                </div>
+            </div>
+            <div class="temple">
+                <h3>Chaiporn Market</h3>
+                <p>Chaiphon Market is a famous market in Nong Khai Province. Located in Nong Khai Municipality, this market is a popular shopping destination for both locals and tourists. Chaiphon Market has a lively atmosphere and is full of shops selling a variety of products. Chaiphon Market is a must-see destination for those who want to experience the local atmosphere of Nong Khai and find unique local products or souvenirs. It is also a great place to try delicious Isan food that is unique.</p>
+                <div class="temple-row">
+                    <img src="images/Chaiporn Market1.jpg" alt="Chaiporn 1">
+                    <img src="images/Chaiporn Market2.jpg" alt="Chaiporn 2">
+                    <img src="images/Chaiporn Market3.jpg" alt="Chaiporn 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 083-149-2099</p>
+            </div>
+            <div class="temple">
+                <h3>Pho Chai Market</h3>
+                <p>Pho Chai Market is considered an important place at the provincial level. It is ranked on the list of things you should know and do in Nong Khai. It is a must to experience the atmosphere of a local morning market in Nong. The main products in the market are fresh and cheap vegetables and fruits, pork, mushrooms, duck, chicken, and Mekong River fish that are easy to buy. But the main point of visiting Pho Chai Market for tourists is to find breakfast, which is so famous that there are more than enough of them, even more than food centers in the capital.</p>
+                <div class="temple-row">
+                    <img src="images/Phochai Market1.jpg" alt="Pho Chai 1">
+                    <img src="images/Phochai Market2.jpg" alt="Pho Chai 2">
+                    <img src="images/Phochai Market3.jpg" alt="Pho Chai 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 095 332 7819 or @ prison_05@hotmail.com</p>
+            </div>
+            <div class="temple">
+                <h3>Chic Chic Market</h3>
+                <p>Chic Chic Market is a newly opened market and its distinctive feature is that this market has a unique identity from the containers. It is decorated with colorful and beautiful containers. At the entrance, there are yellow, red, and blue containers with the word Chic Chic Market on the side of the road. As you go inside, you will see the variety of food options to choose from. There is also an Amazon Coffee shop. There are also various bubble tea shops, salad shops, buffet shabu, barbecue, and many more. You can stop and eat at different shops, including Bang Rak, where everyone likes to come and chill. The place is quite large and is located at the back of Chic Chic Market. There are many tables for customers to sit and relax.</p>
+                <div class="temple-row">
+                    <img src="images/Chic Chic Market 1.jpg" alt="Chic Chic 1">
+                    <img src="images/Chic Chic Market2.jpg" alt="Chic Chic 2">
+                    <img src="images/Chic Chic Market3.jpg" alt="Chic Chic 3">
+                </div>
+                <p></p>
+                <p>Address: Muang, Nong Khai, Thailand</p>
+                <p>Contact @ 042-414-311 or @ cg-asawann@jienggroup.com</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Discovery Nong Khai. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Nong Khai</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for the home icon -->
+    <style>
+        /* Basic Header and Navbar Styles */
+        .header {
+            font-family: 'Verdana';
+            font-weight: bold;
+        }
+
+        .header h1 {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 12px 12px 11px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        
+        .header h2, .header p {
+            font-family: 'Quicksand';
+            color: #FAF9F6;
+            cursor: pointer;
+        }
+
+        /* Styling for Navigation and Home Button */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+            cursor: pointer;
+            padding: 7px 12px;
+            border-radius: 5px;
+            background-image: url('images/Dragon.webp');
+            transition: background-color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            background-color: #3498db;
+        }
+
+        .menu-trigger {
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background-image: url('images/Dragon.webp');
+            color: rgb(244, 240, 240);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-trigger:hover {
+            background-color: #3498db;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Popup Menu Styles */
+        .popup-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 100;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup-menu ul li {
+            margin: 10px 0;
+        }
+
+        .popup-menu ul li a {
+            color: #f7f5f5;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 18px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-menu ul li a:hover {
+            background-color: #3498db;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: #ff5722;
+        }
+
+        /* Temple Section Styling */
+        .temple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .temple {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .temple p {
+            margin-bottom: 10px; /* Adds space between paragraphs */
+            padding: 10px 0; /* Adds space inside the paragraphs */
+            padding-left: 1in;  /* 1 inch of space on the left */
+            padding-right: 1in; /* 1 inch of space on the right */
+        }
+
+        .temple h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .temple-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between the images */
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+        }
+
+        .temple-row img {
+        width: 30%; /* Each image takes up 30% of the row width */
+        height: 40%; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: Limit the height if necessary */
+        object-fit: cover; /* Ensures the image fits without distortion */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Discovery Nong Khai</h1>
+            <div class="nav-buttons">
+                <!-- Home Button with House Icon -->
+                <a href="index.html" aria-label="Home">
+                    <div class="home-icon">
+                        <i class="fas fa-home"></i> <!-- Font Awesome Home Icon -->
+                    </div>
+                </a>
+                <!-- Menu Button -->
+                <div id="menuTrigger" class="menu-trigger" aria-label="Open Navigation Menu">Menu</div>
+            </div>
+            <!-- Popup Menu -->
+            <div id="popupMenu" class="popup-menu">
+                <button id="closeButton" class="close-button" aria-label="Close Navigation Menu">&times;</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Nong Khai</a></li>
+                    <li><a href="temples.html">Temples</a></li>
+                    <li><a href="museums.html">Museums and Parks</a></li>
+                    <li><a href="natural.html">Natural Landscapes</a></li>
+                    <li><a href="markets.html">Markets</a></li>
+                    <li><a href="cafes.html">Cafes and Restaurants</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <h2>Cafés and Restaurants</h2>
+            <p>Find delight in authentic Thai flavors and premium coffee</p>
+        </div>
+    </header>
+    <main>
+        <section class="temple-section">
+            <div class="temple">
+                <h3>Beyond Cafe</h3>
+                <p>Beyond Cafe is a cafe located in the heart of Nong Khai city. The cafe offers a good view and easy parking. Their smoothies, coffee, and cakes are all a must-try.</p>
+                <p>The recommended menu here is toast bread and bingsu, such as strawberry bingsu, mango bingsu, honey toast bread, and various smoothie menus.</p>
+                <div class="temple-row">
+                    <img src="images/Beyond Cafe 2.jpg" alt="Beyond 1">
+                    <img src="images/Beyond Cafe 1.jpg" alt="Beyond 2">
+                </div>
+                <p></p>
+                <p>Address: Nai Mueang, Mueang Nong Khai District, Nong Khai 43000</p>
+                <p>Contact @ 095 221 2465</p>
+            </div>
+            <div class="temple">
+                <h3>Natit Cafe</h3>
+                <p>Natit Cafe is a coffee shop next to the rice field with a great atmosphere. Everything in this shop is delicious, whether it's coffee or cakes.</p>
+                <div class="temple-row">
+                    <img src="images/Natit 2.jpg" alt="Natit 1">
+                    <img src="images/Natit 1.jpg" alt="Natit 2">
+                </div>
+                <p></p>
+                <p>Address: Kuan Wan, Mueang Nong Khai District, Nong Khai 43000</p>
+                <p>Contact @ 099 346 2210</p>
+            </div>
+            <div class="temple">
+                <h3>Baan Thuad Cafe</h3>
+                <p>Baan Thuad Cafe is a coffee shop decorated in a retro style. The ambience in this cafe will make you feel like you are sitting and drinking delicious coffee in a retro house.</p>
+                <div class="temple-row">
+                    <img src="images/Baan Tuad 2.jpg" alt="Baan Thuad 1">
+                    <img src="images/Baan Tuad 1.jpg" alt="Baan Thuad 2">
+                </div>
+                <p></p>
+                <p>Address: 026-480 Near Wat Sri Muang, Nai Mueang, Mueang Nong Khai District, Nong Khai 43000</p>
+                <p>Contact @ 091 492 6969</p>
+            <div class="temple">
+                <h3>The Maceo Hotel</h3>
+                <p>The Maceo Hotel is a luxury hotel in the heart of the city, located on the central road or economic road of Nong Khai. When you walk down, you will find many roadside restaurants and there is also a restaurant in the hotel.</p>
+                <div class="temple-row">
+                    <img src="images/Maceo Hotel 1.jpg" alt="Maceo 1">
+                    <img src="images/Maceo Hotel 2.jpg" alt="Maceo 2">
+                </div>
+                <p></p>
+                <p>Estimated Room Rates: ฿2900 for a room for 2 persons</p>
+            </div>
+            <div class="temple">
+                <h3>Royal Nakhara Hotel and Convention Center</h3>
+                <p>This property features a restaurant, free on-site parking and free Wi-Fi. Rooms at Royal Nakhara Hotel are air-conditioned and feature a work desk, minibar, flat-screen satellite TV and an en suite bathroom with toiletries and a hairdryer. The on-site restaurant serves Thai and international cuisine.</p>
+                <div class="temple-row">
+                    <img src="images/Royal Nakhara 1.jpg" alt="Royal Nakhara 1">
+                    <img src="images/Royal Nakhara 2.jpg" alt="Royal Nakhara 2">
+                </div>
+                <p></p>
+                <p>Room Rates: Start at ฿1020 per night</p>
+            </div>
+            <div class="temple">
+                <h3>Crystal Nong Khai Hotel</h3>
+                <p>This property features a restaurant, free on-site parking and free Wi-Fi. Rooms at Royal Nakhara Hotel are air-conditioned and feature a work desk, minibar, flat-screen satellite TV and an en suite bathroom with toiletries and a hairdryer. The on-site restaurant serves Thai and international cuisine.</p>
+                <div class="temple-row">
+                    <img src="images/Crystal Nongkhai Hotel 4.jpg" alt="Crystal 1">
+                    <img src="images/Crystal Nongkhai Hotel3.jpg" alt="Crystal 2">
+                    <img src="images/Crystal Nongkhai Hotel5.jpg" alt="Crystal 3">
+                </div>
+                <p></p>
+                <p>Room Rates: Start at ฿799 per night</p>
+            </div>
+            <div class="temple">
+                <h3>Silsopa Hotel</h3>
+                <p>Silsopa Hostel is both a guest house and a restaurant. The guest house has a shared bathroom. It is located in the city area, near the market and has many facilities.</p>
+                <div class="temple-row">
+                    <img src="images/Silsopa Hotel 1.jpg" alt="Silsopa 1">
+                    <img src="images/Silsopa Hotel 2.jpg" alt="Silsopa 2">
+                </div>
+                <p></p>
+                <p>Room Rates: Start at ฿589 per night</p>
+            </div>
+            <div class="temple">
+                <h3>Bualinn Resort and Hotel</h3>
+                <p>Bualinn Resort and Hotel is a hotel decorated in a natural style, giving a sense of privacy and also has a small swimming pool. The hotel is a bit far from the city center but ride-hailing applications are always available. The accommodation is clean and worth the price.</p>
+                <div class="temple-row">
+                    <img src="images/Bualinn Hotel 1.jpg" alt="Bualinn 1">
+                    <img src="images/Bualinn Hotel 2.jpg" alt="Bualinn 2">
+                </div>
+                <p></p>
+                <p>Room Rates: King Room with Pool View / ฿1050 per night; Superior Twin Room / ฿1090 per night</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Discovery Nong Khai. All rights reserved.</p>
+    </footer>
+</body>
+</html>
